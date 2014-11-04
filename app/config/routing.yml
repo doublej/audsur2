@@ -1,0 +1,4 @@
+audsur_shop:
+    resource: "@AudsurShopBundle/Resources/config/routing.yml"
+    prefix:   /producten
+

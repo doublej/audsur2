@@ -1,0 +1,27 @@
+audsur_shop_get_products:
+    path:     /alle/
+    defaults: {_controller: AudsurShopBundle:Default:getProducts}
+
+audsur_shop_get_products_index:
+    path:     /alle/{paginatorIndex}
+    defaults: {_controller: AudsurShopBundle:Default:getProducts}
+
+audsur_shop_get_single_product:
+    path:     /{productSlug}
+    defaults: {_controller: AudsurShopBundle:Default:getSingleProduct}
+
+audsur_shop_get_category:
+    path:     /categorie/{slug}
+    defaults: {_controller: AudsurShopBundle:Default:getCategory}
+
+audsur_shop_get_brand:
+    path:     /merk/{brandSlug}
+    defaults: {_controller: AudsurShopBundle:Default:getBrand}
+
+audsur_shop_homepage:
+    path:     admin/create
+    defaults: {_controller: AudsurShopBundle:Default:createProduct}
+
+audsur_shop_upload_csv:
+    path:     /admin/upload
+    defaults: {_controller: AudsurShopBundle:Admin:upload}

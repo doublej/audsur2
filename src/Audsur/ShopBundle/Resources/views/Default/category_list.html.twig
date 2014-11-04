@@ -1,0 +1,7 @@
+<ul>
+	{% for category in categories %}
+		<li>
+			<a href="{{ path('audsur_shop_get_category', {'slug': category.slug} ) }}"> {{category.name}} </a>
+		</li>
+	{% endfor %}
+</ul>
