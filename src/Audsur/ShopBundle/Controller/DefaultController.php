@@ -15,15 +15,12 @@ class DefaultController extends Controller
 {
 
 
-    public function getProductsAction($paginatorIndex)
+    public function getProductsAction($paginatorIndex = 0)
     {
         $products = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Product')
             ->findAll();
 
-        if(!$paginatorIndex){
-            $paginatorIndex = 1;
-        }
         return $this->render('AudsurShopBundle:Default:products.html.twig', array(
                 'products' => $products,
                 'paginatorIndex' => $paginatorIndex
@@ -36,7 +33,7 @@ class DefaultController extends Controller
     {
 
         /*
-         * @todo vind alle producten van een categorie. dit si stuk.
+         * @todo vind alle producten van een categorie. dit is stuk.
          */
         $products = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Product')

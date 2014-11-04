@@ -1,3 +1,7 @@
+audsur_admin:
+    resource: "@AudsurAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 audsur_shop:
     resource: "@AudsurShopBundle/Resources/config/routing.yml"
     prefix:   /producten

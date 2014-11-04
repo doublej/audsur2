@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %} Admin {% endblock %}</title>
+        {% block stylesheets %}
+        <style>
+	        a.active {color:red}
+	    </style>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+	<h1>AudioSurvivors Admin ({{ app.request.attributes.get('_route') }})</h1>
+
+	<div id="menu">
+		<ul>
+			<li>
+				<a
+					class="{% if app.request.attributes.get('_route') == 'admin_index' %}active{% endif %}"
+					href="{{ path('admin_index') }}"
+					>Index
+				</a>
+			</li>
+			<li>
+				<a
+					class="{% if app.request.attributes.get('_route') == 'admin_products' %}active{% endif %}"
+					href="{{ path('admin_products') }}"
+					>Producten
+				</a>
+			<ul>
+				<li>
+					<a
+						class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' or 'admin_csv_import' %}active{% endif %}"
+						href="{{ path('admin_csv_upload') }}"
+						>Importeer
+					</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="">Verhaal</a>
+			</li>
+		</ul>
+	</div>
+	{% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>
