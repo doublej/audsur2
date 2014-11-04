@@ -1,0 +1,59 @@
+{% extends "::adminbase.html.twig" %}
+{% block title %} Admin | Index {% endblock %}
+{% block stylesheets %}
+    <style>
+        label{
+	        display: block;
+	        border-bottom:1px solid #ccc;
+	        padding:10px 0
+        }
+    </style>
+{% endblock %}
+{% block body %}
+	<h2>Edit product</h2>
+	<form action="{{ path('admin_product_save') }}" method="post" enctype="multipart/form-data" name="csv_form" id="csv_form">
+		<fieldset>
+			<legend>Productinformatie</legend>
+			<label>
+				<span>Productcategorie</span>
+				<select>
+					{% for category in categories %}
+						<option>{{ category.name }}</option>
+					{% endfor %}
+				</select>
+			</label>
+			<label>
+				<span>Merk</span>
+				<select>
+					{% for brand in brands %}
+						<option>{{ brand.name }}</option>
+					{% endfor %}
+				</select>
+			</label>
+			<label>
+				<span>Typenummer</span>
+				<input value="{{ product.name }}" placeholder="Typenummer">
+			</label>
+			<label>
+				<span>Prijs (inclusief BTW)</span>
+				<input value="{{ product.priceIn }}" placeholder="">
+			</label>
+			<label>
+				<span>Prijs (exclusief BTW)</span>
+				<input value="{{ product.priceEx }}" placeholder="">
+			</label>
+			<label>
+				<span>Omschrijving</span><br>
+				<textarea placeholder="">{{ product.description }}</textarea>
+			</label>
+
+			<label>
+				<span>Voorraad</span><br>
+				<input value="{{ product.stock }}" placeholder="">
+			</label>
+			<input type="submit">
+		</fieldset>
+	</form>
+{% endblock %}
+
+

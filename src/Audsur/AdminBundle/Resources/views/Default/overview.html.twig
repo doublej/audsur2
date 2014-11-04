@@ -2,9 +2,31 @@
 {% block title %} Admin | Index {% endblock %}
 {% block body %}
 	<h2>Overzicht</h2>
-	<p>
-		Hier kun je de inhoud van je website beheren, statistieken opvragen etc.
-	</p>
+	<table>
+		<th>
+			<tr>
+				<td>id</td>
+				<td>categorie</td>
+				<td>merk</td>
+				<td>type</td>
+				<td>omschrijving</td>
+			</tr>
+		</th>
+	{% for product in products[(paginatorIndex * 10):10]%}
+		<tr>
+			<td>{{ product.id }}</td>
+			<td>{{ product.category.name }}</td>
+			<td>{{ product.brand.name }}</td>
+			<td>{{ product.name }}</td>
+			<td>{{ product.description }}</td>
+			<td>
+				<a href="{{ path('admin_product_edit', {'id': product.id} ) }}">wijzig</a>
+			</td>
+			<td>verwijder</td>
+		</tr>
+	{% endfor %}
+	</table>
+
 {% endblock %}
 
 

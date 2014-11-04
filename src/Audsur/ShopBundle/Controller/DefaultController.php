@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
 
 
-    public function getProductsAction($paginatorIndex = 0)
+    public function getProductsAction($paginatorIndex)
     {
         $products = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Product')
@@ -26,7 +26,6 @@ class DefaultController extends Controller
                 'paginatorIndex' => $paginatorIndex
             )
         );
-
     }
 
     public function getBrandAction()

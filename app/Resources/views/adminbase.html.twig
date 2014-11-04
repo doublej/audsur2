@@ -24,19 +24,19 @@
 			</li>
 			<li>
 				<a
-					class="{% if app.request.attributes.get('_route') == 'admin_products' %}active{% endif %}"
-					href="{{ path('admin_products') }}"
+					class="{% if app.request.attributes.get('_route') == 'admin_product_overview' %}active{% endif %}"
+					href="{{ path('admin_product_overview') }}"
 					>Producten
 				</a>
-			<ul>
-				<li>
-					<a
-						class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' or 'admin_csv_import' %}active{% endif %}"
-						href="{{ path('admin_csv_upload') }}"
-						>Importeer
-					</a>
-				</li>
-			</ul>
+				<ul>
+					<li>
+						<a
+							class="{% if app.request.attributes.get('_route') == ('admin_csv_upload' or 'admin_csv_import') %}active{% endif %}"
+							href="{{ path('admin_csv_upload') }}"
+							>Importeer
+						</a>
+					</li>
+				</ul>
 			</li>
 			<li>
 				<a href="">Verhaal</a>
