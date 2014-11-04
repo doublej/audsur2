@@ -1,0 +1,10 @@
+{% extends "::adminbase.html.twig" %}
+{% block title %} Admin | Producten {% endblock %}
+{% block body %}
+	<h2>Product toevoegen</h2>
+	{{ form(productForm) }}
+		{{ form_errors(productForm) }}
+	{{ form_end(productForm) }}
+{% endblock %}
+
+

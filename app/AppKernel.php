@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Audsur\ShopBundle\AudsurShopBundle(),
             new Audsur\AdminBundle\AudsurAdminBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

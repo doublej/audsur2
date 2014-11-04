@@ -31,9 +31,16 @@
 				<ul>
 					<li>
 						<a
-							class="{% if app.request.attributes.get('_route') == ('admin_csv_upload' or 'admin_csv_import') %}active{% endif %}"
+							class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' %}active{% endif %}"
 							href="{{ path('admin_csv_upload') }}"
 							>Importeer
+						</a>
+					</li>
+					<li>
+						<a
+							class="{% if app.request.attributes.get('_route') == 'admin_product_add' %}active{% endif %}"
+							href="{{ path('admin_product_add') }}"
+							>Voeg toe
 						</a>
 					</li>
 				</ul>

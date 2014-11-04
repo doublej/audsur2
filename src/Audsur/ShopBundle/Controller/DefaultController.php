@@ -23,7 +23,7 @@ class DefaultController extends Controller
 
         return $this->render('AudsurShopBundle:Default:products.html.twig', array(
                 'products' => $products,
-                'paginatorIndex' => $paginatorIndex
+                'paginatorIndex' => $paginatorIndex,
             )
         );
     }

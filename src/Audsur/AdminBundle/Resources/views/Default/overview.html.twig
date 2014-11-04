@@ -15,14 +15,14 @@
 	{% for product in products[(paginatorIndex * 10):10]%}
 		<tr>
 			<td>{{ product.id }}</td>
-			<td>{{ product.category.name }}</td>
 			<td>{{ product.brand.name }}</td>
 			<td>{{ product.name }}</td>
-			<td>{{ product.description }}</td>
 			<td>
 				<a href="{{ path('admin_product_edit', {'id': product.id} ) }}">wijzig</a>
 			</td>
-			<td>verwijder</td>
+			<td>
+				<a href="{{ path('admin_product_delete', {'id': product.id} ) }}">verwijder</a>
+			</td>
 		</tr>
 	{% endfor %}
 	</table>
