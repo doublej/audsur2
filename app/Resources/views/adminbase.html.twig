@@ -11,7 +11,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-	<h1>AudioSurvivors Admin ({{ app.request.attributes.get('_route') }})</h1>
+	<h1>AudioSurvivors Admin</h1>
 
 	<div id="menu">
 		<ul>
@@ -31,25 +31,29 @@
 				<ul>
 					<li>
 						<a
-							class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' %}active{% endif %}"
-							href="{{ path('admin_csv_upload') }}"
-							>Importeer
-						</a>
-					</li>
-					<li>
-						<a
 							class="{% if app.request.attributes.get('_route') == 'admin_product_add' %}active{% endif %}"
 							href="{{ path('admin_product_add') }}"
 							>Voeg toe
 						</a>
 					</li>
+					<li>
+						<a
+							class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' %}active{% endif %}"
+							href="{{ path('admin_csv_upload') }}"
+							>Importeer CSV
+						</a>
+					</li>
 				</ul>
-			</li>
-			<li>
-				<a href="">Verhaal</a>
 			</li>
 		</ul>
 	</div>
+
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+		<div class="flash-notice">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
+
 	{% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
     </body>

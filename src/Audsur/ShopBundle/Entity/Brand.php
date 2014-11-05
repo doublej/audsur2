@@ -35,7 +35,7 @@ class Brand
     protected $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="brand")
      */
     protected $products;
 
