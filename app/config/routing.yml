@@ -1,3 +1,7 @@
+audsur_security:
+    resource: "@AudsurSecurityBundle/Resources/config/routing.yml"
+    prefix:   /login
+
 audsur_admin:
     resource: "@AudsurAdminBundle/Resources/config/routing.yml"
     prefix:   /admin

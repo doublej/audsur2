@@ -1,0 +1,4 @@
+services:
+#    audsur_security.example:
+#        class: Audsur\SecurityBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

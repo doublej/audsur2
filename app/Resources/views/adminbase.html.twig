@@ -12,7 +12,7 @@
     </head>
     <body>
 	<h1>AudioSurvivors Admin</h1>
-
+	{% if app.user %}
 	<div id="menu">
 		<ul>
 			<li>
@@ -47,6 +47,7 @@
 			</li>
 		</ul>
 	</div>
+	{% endif %}
 
 	{% for flashMessage in app.session.flashbag.get('notice') %}
 		<div class="flash-notice">

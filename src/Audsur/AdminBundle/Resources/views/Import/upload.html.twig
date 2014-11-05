@@ -1,0 +1,15 @@
+{% extends "::adminbase.html.twig" %}
+{% block title %} Admin | Importeren {% endblock %}
+
+{% block body %}
+	<h2>Importeren: upload bestand</h2>
+	<p>
+		Selecteer het CSV bestand wat je wilt uploaden:
+	</p>
+	<form action="{{ path('admin_csv_import') }}" method="post" enctype="multipart/form-data" name="csv_form" id="csv_form">
+		Kies je bestand: <input name="csv" type="file" id="csv" /> <input type="submit" name="Submit" value="Submit" />
+	</form>
+
+{% endblock %}
+
+

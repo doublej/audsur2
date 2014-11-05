@@ -1,0 +1,43 @@
+admin_index:
+    path:     /
+    defaults: { _controller: AudsurAdminBundle:Default:index }
+
+admin_csv_upload:
+    path:     /productbeheer/import/
+    defaults: { _controller: AudsurAdminBundle:Import:upload }
+
+admin_csv_import:
+    path:     /productbeheer/import/result/
+    defaults: { _controller: AudsurAdminBundle:Import:import }
+
+admin_product_overview:
+    path:     /productbeheer/{paginatorIndex}/
+    defaults: { _controller: AudsurAdminBundle:Default:productOverview, paginatorIndex: 0 }
+    requirements:
+            paginatorIndex:  \d+
+
+admin_product_overview:
+    path:     /productbeheer/{paginatorIndex}/sort/{sort}
+    defaults: { _controller: AudsurAdminBundle:Default:productOverview, paginatorIndex: 0 }
+    requirements:
+            paginatorIndex:  \d+
+
+admin_product_add:
+    path:     /productbeheer/toevoegen/
+    defaults: { _controller: AudsurAdminBundle:Default:productEdit, type: add, id: null }
+
+
+admin_product_edit:
+    path:     /productbeheer/wijzig/{id}/
+    defaults: { _controller: AudsurAdminBundle:Default:productEdit, type:edit }
+    requirements:
+                id:  \d+
+
+admin_product_delete:
+    path:     /productbeheer/verwijder/{id}/
+    defaults: { _controller: AudsurAdminBundle:Default:productDelete }
+    requirements:
+            id:  \d+
+
+
+

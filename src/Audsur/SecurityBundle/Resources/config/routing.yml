@@ -1,0 +1,6 @@
+audsur_security_login:
+    path:     /
+    defaults: { _controller: AudsurSecurityBundle:Default:login }
+
+audsur_security_login_check:
+    path:     /check
