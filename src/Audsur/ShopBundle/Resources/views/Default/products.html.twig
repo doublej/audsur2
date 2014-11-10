@@ -17,12 +17,8 @@
 {% endfor %}
 </table>
 
+<a href="{{ paginatorIndex - 1 }}">vorige</a>
+<a href="{{ paginatorIndex + 1 }}">volgende</a>
 
-
-
-
-{#<a href="{{ paginatorIndex - 1 }}">vorige</a>#}
-{#<a href="{{ paginatorIndex + 1 }}">volgende</a>#}
-
-{#{{ render(controller('AudsurShopBundle:Menu:categoryList')) }}#}
-{#{{ render(controller('AudsurShopBundle:Menu:brandList')) }}#}
+{{ render(controller('AudsurShopBundle:Menu:categoryList')) }}
+{{ render(controller('AudsurAdminBundle:Default:')) }}

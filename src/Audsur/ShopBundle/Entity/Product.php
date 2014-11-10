@@ -2,6 +2,7 @@
 namespace Audsur\ShopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -58,7 +59,15 @@ class Product
      */
     protected $brand;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
+     */
+    protected $images;
 
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -252,5 +261,48 @@ class Product
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \Audsur\ShopBundle\Entity\Image $image
+     * @return Product
+     */
+    public function addImage(\Audsur\ShopBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \Audsur\ShopBundle\Entity\Image $image
+     */
+    public function removeImage(\Audsur\ShopBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

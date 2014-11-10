@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Audsur\AdminBundle\AudsurAdminBundle(),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Audsur\SecurityBundle\AudsurSecurityBundle(),
+            new Audsur\PagesBundle\AudsurPagesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,7 @@
+audsur_home:
+    path:     /
+    defaults: { _controller: AudsurPagesBundle:Default:index }
+
+audsur_pages:
+    path:     /{page}
+    defaults: { _controller: AudsurPagesBundle:Default:index }

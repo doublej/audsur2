@@ -11,7 +11,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-	<h1>AudioSurvivors Admin</h1>
+	<h1>Admin</h1>
 	{% if app.user %}
 	<div id="menu">
 		<ul>
@@ -25,7 +25,7 @@
 			<li>
 				<a
 					class="{% if app.request.attributes.get('_route') == 'admin_product_overview' %}active{% endif %}"
-					href="{{ path('admin_product_overview') }}"
+					href="{{ path('admin_product_overview_home') }}"
 					>Producten
 				</a>
 				<ul>

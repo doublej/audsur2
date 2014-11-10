@@ -10,3 +10,7 @@ audsur_shop:
     resource: "@AudsurShopBundle/Resources/config/routing.yml"
     prefix:   /producten
 
+audsur_pages:
+    resource: "@AudsurPagesBundle/Resources/config/routing.yml"
+    prefix: /
+

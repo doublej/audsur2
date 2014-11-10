@@ -2,16 +2,31 @@
 {% block title %} Admin | Index {% endblock %}
 {% block body %}
 	<h2>Overzicht</h2>
+
+	<h3>Filter Resultaten</h3>
+	{{ form(filterForm) }}
+
+	{#{% if paginatorIndex > 0 %}#}
+		{#<a href="{{ path('admin_product_overview', {'paginatorIndex': paginatorIndex - 1, test:10}) }}">vorige pagina</a>#}
+	{#{% endif %}#}
+
+	{#{% if paginatorIndex < totalResult * limitResult %}#}
+		{#<a href="{{ path('admin_product_overview', {'paginatorIndex': paginatorIndex + 1}) }}">volgende pagina</a>#}
+	{#{% endif %}#}
+
+
+	<h3>Resultaten</h3>
+
+	{% for product in products[(paginatorIndex * limitResult):limitResult] %}
+	{% if loop.first %}
 	<table>
 		<th>
-			<tr>
-				<td>categorie</td>
-				<td>id</td>
-				<td>merk</td>
-				<td>type</td>
-			</tr>
+			<td>categorie</td>
+			<td>id</td>
+			<td>merk</td>
+			<td>type</td>
 		</th>
-	{% for product in products[(paginatorIndex * limit):limit] %}
+	{% endif %}
 		<tr>
 			<td>{{ product.category.name }}</td>
 			<td>{{ product.id }}</td>
@@ -24,10 +39,10 @@
 				<a href="{{ path('admin_product_delete', {id: product.id}) }}">verwijder</a>
 			</td>
 		</tr>
-	{% endfor %}
-	</table>
 
-	{{ form(filterForm) }}
+		{% if loop.last %}</table>{% endif %}
+
+	{% endfor %}
 
 {% endblock %}
 

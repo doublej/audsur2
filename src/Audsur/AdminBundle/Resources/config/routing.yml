@@ -12,9 +12,14 @@ admin_csv_import:
 
 admin_product_overview:
     path:     /productbeheer/{paginatorIndex}/
-    defaults: { _controller: AudsurAdminBundle:Default:productOverview, paginatorIndex: 0 }
+    defaults: { _controller: AudsurAdminBundle:Default:productOverview, paginatorIndex: 0, test: 0 }
     requirements:
             paginatorIndex:  \d+
+
+admin_product_overview_home:
+    path:     /productbeheer/
+    defaults: { _controller: AudsurAdminBundle:Default:productOverview, paginatorIndex: 0 }
+
 
 admin_product_overview:
     path:     /productbeheer/{paginatorIndex}/sort/{sort}

@@ -1,7 +1,7 @@
 <ul>
 	{% for brand in brands %}
 		<li>
-			<a href="{{ path('audsur_shop_get_brand', {'slug': brand.slug} ) }}"> {{brand.name}} </a>
+			<a href="{{ path('audsur_shop_get_brand', {'slug': brand.slug   } ) }}"> {{brand.name}} </a>
 		</li>
 	{% endfor %}
 </ul>

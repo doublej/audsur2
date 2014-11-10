@@ -1,10 +1,39 @@
 {% extends "::adminbase.html.twig" %}
 {% block title %} Admin | Producten {% endblock %}
 {% block body %}
-	<h2>Product toevoegen</h2>
-	{{ form(productForm) }}
-		{{ form_errors(productForm) }}
-	{{ form_end(productForm) }}
+
+
+	<div>
+		<h2>Product toevoegen</h2>
+
+		<div>
+			<h3>Product informatie</h3>
+			{{ form(productForm) }}
+			{{ form_errors(productForm) }}
+			{{ form_end(productForm) }}
+		</div>
+
+		{% if imageForm %}
+		<div>
+			<h3>Voeg plaatje toe</h3>
+			{{ form(imageForm) }}
+		</div>
+		{% endif %}
+
+
+		{% for image in images %}
+			{% if loop.first %}
+			<div>
+				<h3>Bijgevoegde plaatjes</h3>
+			{% endif %}
+				<div>
+					<img src="{{ asset(image.getWebPath) }}" width="100" />
+					<a href="">delete image</a>
+				</div>
+
+			{% if loop.last%}
+			</div>
+			{% endif %}
+		{% endfor%}
+	</div>
 {% endblock %}
-
-
