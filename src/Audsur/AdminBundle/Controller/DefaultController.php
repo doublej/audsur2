@@ -27,7 +27,7 @@ class DefaultController extends Controller
         $paginatorIndex = 0,
         $predifinedCategory = null,
         $predefinedBrand = null
-//        $predifinedLimit = null
+//      $predifinedLimit = null
     )
     {
         $productsRepo = $this->getDoctrine()->getRepository('AudsurShopBundle:Product');
@@ -73,6 +73,7 @@ class DefaultController extends Controller
                     'empty_value'   => 'Alle',
                     'data' => $predefinedBrand,
                 ))
+// >> CANT GET THIS TO WORK
 //            ->add('limit', 'choice', array(
 //                    'choices'   => array(
 //                        '10' => 10,
@@ -125,7 +126,6 @@ class DefaultController extends Controller
 
         if($type == 'add'){
             $product = new Product();
-
             $flashMessage = 'Product is succesvol toegevoegd.';
         }else{
             $product = $this->getDoctrine()
@@ -235,7 +235,24 @@ class DefaultController extends Controller
         $em->remove($product);
         $em->flush();
 
-        $this->get('session')->getFlashBag()->add( 'notice', 'Product is succesvol verwijderd' );
+        $this->get('session')->getFlashBag()->add('notice', 'Product is succesvol verwijderd');
+
+        return $this->redirect($this->generateUrl('admin_product_overview'));
+
+    }
+
+    public function imageDeleteAction($imageId){
+
+
+        $product = $this->getDoctrine()
+            ->getRepository('AudsurShopBundle:Image')
+            ->find($imageId);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($product);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('notice', 'Image is succesvol verwijderd');
 
         return $this->redirect($this->generateUrl('admin_product_overview'));
 

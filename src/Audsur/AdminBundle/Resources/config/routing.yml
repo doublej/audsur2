@@ -44,5 +44,8 @@ admin_product_delete:
     requirements:
             id:  \d+
 
-
-
+admin_product_image_delete:
+    path:     /productbeheer/verwijder_plaatje/{imageId}/
+    defaults: { _controller: AudsurAdminBundle:Default:imageDelete}
+    requirements:
+            imageId:  \d+

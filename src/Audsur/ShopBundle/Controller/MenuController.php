@@ -17,7 +17,7 @@ class MenuController extends Controller
             ->findAll();
 
 
-        return $this->render('AudsurShopBundle:Default:category_list.html.twig', array(
+        return $this->render('AudsurShopBundle:Default:categoryList.html.twig', array(
                 'categories' => $categories,
                 'brands' => $brands
             ));
@@ -34,7 +34,7 @@ class MenuController extends Controller
             ->findAll();
 
 
-        return $this->render('AudsurShopBundle:Default:brand_list.html.twig', array(
+        return $this->render('AudsurShopBundle:Default:brandList.html.twig', array(
                 'categories' => $categories,
                 'brands' => $brands
             ));

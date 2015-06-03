@@ -1,24 +1,37 @@
-
-<table>
-{% for product in products[(paginatorIndex * 10):10]%}
-		<tr>
+{% extends "::base.html.twig" %}
+{% block title %} Home {% endblock %}
+{% block body %}
+	<h2>title</h2>
+	{% for key, products in products %}
+		{{ key }}
+		{% for product in products %}
+			{% if loop.first %}
+			<table>
+			{% endif %}
+			<tr>
 			<td>{{ product.id }}
 			</td>
 			<td>{{ product.category.name }}</td>
 			<td>{{ product.brand.name }}</td>
 			<td>
-				<a href="{{ path('audsur_shop_get_single_product', {'productSlug': product.slug} ) }}">
-					{{ product.name }}
-				</a></td>
+			<a href="{{ path('audsur_shop_get_single_product', {'productSlug': product.slug} ) }}">
+			{{ product.name }}
+			</a></td>
 			<td>{{ product.description }}</td>
-		</tr>
-{% else %}
-	No users have been found.
-{% endfor %}
-</table>
+			</tr>
+			{% if loop.last %}
+			</table>
+			{% endif %}
+		{% endfor %}
 
-<a href="{{ paginatorIndex - 1 }}">vorige</a>
-<a href="{{ paginatorIndex + 1 }}">volgende</a>
+	{#{% else %}#}
+		{#No users have been found.#}
+	{% endfor %}
 
-{{ render(controller('AudsurShopBundle:Menu:categoryList')) }}
-{{ render(controller('AudsurAdminBundle:Default:')) }}
+
+	{#<a href="{{ paginatorIndex - 1 }}">vorige</a>#}
+	{#<a href="{{ paginatorIndex + 1 }}">volgende</a>#}
+
+{% endblock %}
+
+

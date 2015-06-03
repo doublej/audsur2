@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
 
 
-    public function getProductsAction($paginatorIndex)
+    public function getProductsAction($paginatorIndex = 0)
     {
         $products = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Product')
@@ -28,22 +28,41 @@ class DefaultController extends Controller
         );
     }
 
-    public function getBrandAction()
+    public function getGroupAction($slug, $type = null, $grouped = true)
     {
 
-        /*
-         * @todo vind alle producten van een categorie. dit is stuk.
-         */
-        $products = $this->getDoctrine()
-            ->getRepository('AudsurShopBundle:Product')
-            ->findByBrand(1);
 
-        print_r($products);
+        $selectedGroup = $this->getDoctrine()->getRepository(
+            'AudsurShopBundle:'.$type
+        );
+        $selectedGroup = $selectedGroup->findOneBySlug($slug);
+
+        $products = $this->getDoctrine()
+            ->getRepository('AudsurShopBundle:Product');
+
+        $query = $products->createQueryBuilder('p')
+            ->join('p.brand','b')
+            ->join('p.category','g')
+            ->select('p', 'b', 'g')
+            ->where('p.'.strtolower($type).' = '.$selectedGroup->getId());
+
+        $products = $query->getQuery()->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+
+
+        $treeArray = array();
+        foreach($products as $el) {
+            $firstLetter = strtoupper(substr($el['brand']['name'], 0, 1));
+            if(!(isset($treeArray[$firstLetter])) ) {
+                $treeArray[$firstLetter] = array();
+
+            }
+            array_push($treeArray[$firstLetter], $el);
+        }
 
         $paginatorIndex = 1;
-
+//        print_r($treeArray);die;
         return $this->render('AudsurShopBundle:Default:products.html.twig', array(
-                'products' => $products,
+                'products' => $treeArray,
                 'paginatorIndex' => $paginatorIndex
             )
         );
@@ -51,3 +70,5 @@ class DefaultController extends Controller
     }
 
 }
+
+

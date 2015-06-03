@@ -1,5 +1,5 @@
 audsur_shop_get_products:
-    path:     /alle/
+    path:     /
     defaults: {_controller: AudsurShopBundle:Default:getProducts}
 
 audsur_shop_get_products_index:
@@ -12,9 +12,9 @@ audsur_shop_get_single_product:
 
 audsur_shop_get_category:
     path:     /categorie/{slug}
-    defaults: {_controller: AudsurShopBundle:Default:getCategory}
+    defaults: {_controller: AudsurShopBundle:Default:getGroup, type: Category}
 
 audsur_shop_get_brand:
-    path:     /merk/{brandSlug}
-    defaults: {_controller: AudsurShopBundle:Default:getBrand}
+    path:     /merk/{slug}
+    defaults: {_controller: AudsurShopBundle:Default:getGroup, type: Brand}
 

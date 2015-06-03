@@ -28,7 +28,7 @@
 			{% endif %}
 				<div>
 					<img src="{{ asset(image.getWebPath) }}" width="100" />
-					<a href="">delete image</a>
+					<a href="{{ path('admin_product_image_delete', {'imageId': image.id }) }}">delete image</a>
 				</div>
 
 			{% if loop.last%}
