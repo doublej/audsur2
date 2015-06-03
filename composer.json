@@ -19,7 +19,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "cocur/slugify": "@stable",
-	    "knplabs/knp-markdown-bundle": "~1.3"
+        "stfalcon/tinymce-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

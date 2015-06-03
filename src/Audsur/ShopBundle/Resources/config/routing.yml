@@ -4,11 +4,11 @@ audsur_shop_get_products:
 
 audsur_shop_get_products_index:
     path:     /alle/{paginatorIndex}
-    defaults: {_controller: AudsurShopBundle:Default:getProducts}
+    defaults: {_controller: AudsurShopBundle:Default:getAllProducts}
 
 audsur_shop_get_single_product:
-    path:     /{productSlug}
-    defaults: {_controller: AudsurShopBundle:Default:getSingleProduct}
+    path:     /categorie/{categorySlug}/{productSlug}_{productId}
+    defaults: {_controller: AudsurShopBundle:Default:getSingleProduct }
 
 audsur_shop_get_category:
     path:     /categorie/{slug}

@@ -1,5 +1,9 @@
 {% extends "::adminbase.html.twig" %}
 {% block title %} Admin | Producten {% endblock %}
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('bundles/stfalcontinymce/vendor/tinymce/tinymce.min.js')}}"></script>
+	<script type="text/javascript"> tinymce.init({ selector: "textarea" }); </script>
+{% endblock %}
 {% block body %}
 
 
@@ -28,7 +32,7 @@
 			{% endif %}
 				<div>
 					<img src="{{ asset(image.getWebPath) }}" width="100" />
-					<a href="{{ path('admin_product_image_delete', {'imageId': image.id }) }}">delete image</a>
+					<a href="{{ path('admin_product_image_delete', {'productId': app.request.attributes.get('_route_params')['id'], 'imageId': image.id }) }}">delete image</a>
 				</div>
 
 			{% if loop.last%}

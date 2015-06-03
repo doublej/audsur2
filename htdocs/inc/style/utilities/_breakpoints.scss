@@ -1,0 +1,11 @@
+/**
+ * Respond To (Breakpoint)
+ * @param {string} $name - Name of the breakpoint used in $breakpoints
+ */
+@mixin respond-to($name) {
+	@if map-has-key($breakpoints, $name) {
+		@media #{map-get($breakpoints, $name)} {
+			@content;
+		}
+	}
+}

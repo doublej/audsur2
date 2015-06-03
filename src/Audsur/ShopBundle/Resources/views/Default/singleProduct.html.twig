@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+{% set bodyClass = 'bla' %}
+{% block title %} Home {% endblock %}
+{% block body %}
+
+	<h1>{{ product.brand.name }} {{ product.name }}</h1>
+
+	<div class="description">{{ product.description | raw}}</div>
+
+	{% for image in product.images %}
+	{% if loop.first %}
+	<div class="media">
+		<h3>Afbeeldingen</h3>
+	{% endif %}
+		<div>
+			<img src="{{ asset(image.getWebPath) }}" width="100" />
+		</div>
+	{% if loop.last%}
+	</div>
+	{% endif %}
+	{% endfor %}
+{% endblock %}
+
+

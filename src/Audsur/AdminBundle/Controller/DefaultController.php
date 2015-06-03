@@ -3,14 +3,14 @@
 namespace Audsur\AdminBundle\Controller;
 
 use Cocur\Slugify\Slugify;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Audsur\ShopBundle\Entity\Product;
 use Audsur\ShopBundle\Entity\Image;
@@ -123,6 +123,9 @@ class DefaultController extends Controller
 
     public function productEditAction($id, $type, Request $request)
     {
+        /*
+         * @todo Split this into more readable functions
+         */
 
         if($type == 'add'){
             $product = new Product();
@@ -169,6 +172,10 @@ class DefaultController extends Controller
                         'data' => $product,
                         'disabled' => false,
                     ))
+                /*
+                 * @todo change the product dropdown into a hidden field, needs workaround
+                 * http://lrotherfield.com/blog/symfony2-forms-hidden-entity-type-part-2/
+                 */
                 ->add('name')
                 ->add('file')
                 ->add('save', 'submit', array('label' => 'Opslaan'))
@@ -207,7 +214,6 @@ class DefaultController extends Controller
         if ($request->request->has('imageform')) {
 
             $em = $this->getDoctrine()->getManager();
-
             $em->persist($image);
             $em->flush();
 
@@ -241,8 +247,7 @@ class DefaultController extends Controller
 
     }
 
-    public function imageDeleteAction($imageId){
-
+    public function imageDeleteAction($productId, $imageId){
 
         $product = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Image')
@@ -254,7 +259,7 @@ class DefaultController extends Controller
 
         $this->get('session')->getFlashBag()->add('notice', 'Image is succesvol verwijderd');
 
-        return $this->redirect($this->generateUrl('admin_product_overview'));
+        return $this->redirect($this->generateUrl('admin_product_edit', array('id' => $productId)));
 
     }
 

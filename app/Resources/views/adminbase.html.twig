@@ -3,51 +3,59 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %} Admin {% endblock %}</title>
-        {% block stylesheets %}
-        <style>
-	        a.active {color:red}
-	    </style>
-        {% endblock %}
+        {{ block('stylesheets') }}
+	    {{ block('javascripts') }}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-	<h1>Admin</h1>
-	{% if app.user %}
-	<div id="menu">
-		<ul>
-			<li>
-				<a
-					class="{% if app.request.attributes.get('_route') == 'admin_index' %}active{% endif %}"
-					href="{{ path('admin_index') }}"
-					>Index
-				</a>
-			</li>
-			<li>
-				<a
-					class="{% if app.request.attributes.get('_route') == 'admin_product_overview' %}active{% endif %}"
-					href="{{ path('admin_product_overview_home') }}"
-					>Producten
-				</a>
-				<ul>
-					<li>
-						<a
-							class="{% if app.request.attributes.get('_route') == 'admin_product_add' %}active{% endif %}"
-							href="{{ path('admin_product_add') }}"
-							>Voeg toe
-						</a>
-					</li>
-					<li>
-						<a
-							class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' %}active{% endif %}"
-							href="{{ path('admin_csv_upload') }}"
-							>Importeer CSV
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	{% endif %}
+    <header>
+		<h1>Admin</h1>
+		{% if app.user %}
+		<div id="menu">
+			<ul>
+				<li>
+					<a
+						class="{% if app.request.attributes.get('_route') == 'admin_index' %}active{% endif %}"
+						href="{{ path('admin_index') }}"
+						>Index
+					</a>
+				</li>
+				<li>
+					<a
+						class="{% if app.request.attributes.get('_route') == 'admin_product_overview' %}active{% endif %}"
+						href="{{ path('admin_product_overview_home') }}"
+						>Producten
+					</a>
+					<ul>
+						<li>
+							<a
+								class="{% if app.request.attributes.get('_route') == 'admin_product_add' %}active{% endif %}"
+								href="{{ path('admin_product_add') }}"
+								>Voeg product toe
+							</a>
+						</li>
+
+						<li>
+							Voeg productcategorie toe (inactief)
+						</li>
+
+						<li>
+							Voeg merk toe (inactief)
+						</li>
+
+						<li>
+							<a
+								class="{% if app.request.attributes.get('_route') == 'admin_csv_upload' %}active{% endif %}"
+								href="{{ path('admin_csv_upload') }}"
+								>Importeer CSV
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		{% endif %}
+    </header>
 
 	{% for flashMessage in app.session.flashbag.get('notice') %}
 		<div class="flash-notice">

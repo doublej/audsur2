@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+	    <link rel="stylesheet" type="text/css" href="{{ asset('inc/style/screen.css') }}"
     </head>
-    <body>
+    <body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %} >
 
         {{ render(controller('AudsurShopBundle:Menu:categoryList')) }}
         {% block body %}{% endblock %}

@@ -15,15 +15,30 @@ class DefaultController extends Controller
 {
 
 
-    public function getProductsAction($paginatorIndex = 0)
+    public function getAllProductsAction($paginatorIndex = 0)
     {
         $products = $this->getDoctrine()
             ->getRepository('AudsurShopBundle:Product')
             ->findAll();
 
-        return $this->render('AudsurShopBundle:Default:products.html.twig', array(
+        return $this->render('AudsurShopBundle:Default:productOverview.html.twig', array(
                 'products' => $products,
                 'paginatorIndex' => $paginatorIndex,
+            )
+        );
+    }
+
+    /*
+     * @todo create links based on slugs, which are currently not unique
+     */
+    public function getSingleProductAction($productId)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository('AudsurShopBundle:Product')
+            ->findOneById($productId);
+
+        return $this->render('AudsurShopBundle:Default:singleProduct.html.twig', array(
+                'product' => $product
             )
         );
     }
@@ -61,7 +76,7 @@ class DefaultController extends Controller
 
         $paginatorIndex = 1;
 //        print_r($treeArray);die;
-        return $this->render('AudsurShopBundle:Default:products.html.twig', array(
+        return $this->render('AudsurShopBundle:Default:productOverview.html.twig', array(
                 'products' => $treeArray,
                 'paginatorIndex' => $paginatorIndex
             )

@@ -1,0 +1,32 @@
+html, body {
+	padding-top: 0;
+	height: 100%;
+}
+
+.view {
+	height: 100%;
+}
+
+.dev-bar {
+	position: absolute;
+	opacity: 0.8;
+	@include offset(0,0);
+	width: 100%;
+	text-align: center;
+	line-height: 30px;
+	color: #333;
+	cursor: pointer;
+	background-color: #fff4c8;
+	border-bottom: 1px solid #e2d7ae;
+	z-index: length($layout) + 1;
+
+	.btn-close {
+		position: absolute;
+		margin-top: -15px;
+		right: 10px;
+		top: 50%;
+	}
+}
+
+@import "_header";
+@import "_footer";

@@ -1,0 +1,51 @@
+// The default Typescript Scrollbar styling
+.scroll-wrapper {
+	position: relative;
+	overflow: hidden;
+	height:	100%;
+
+	.scroll-content {
+		width: 100%;
+		height: 100%;
+		padding-right: 20px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	.scroll-bar {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 6px;
+
+		&:before {
+			display: none;
+			content: '.';
+			@extend .ir;
+			width: 2px;
+			height: 100%;
+			position: absolute;
+			left: -2px;
+			top: 0;
+			bottom: 0;
+			background: transparent;
+		}
+
+		&:hover:before {
+			display: block;
+		}
+	}
+
+	.knob {
+		position: relative;
+		display: block;
+		height: 100px;
+		background: #aaa;
+		border-radius: 3px;
+
+		.rgba & {
+			background: rgba(166,159,147,.75);
+		}
+	}
+}

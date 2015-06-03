@@ -1,0 +1,70 @@
+/**
+ * Grid Sass
+ * license: GNU GENERAL PUBLIC LICENSE Version 2, June 1991.
+ * copyright: Copyright (c) 2013 Mient-jan Stelling
+ * @author Mient-jan Stelling <mientjan.stelling$gmail.com>
+ * @param {string} $name (grid) - Classname
+ * @param {size} $width (100px) - Width of the grid
+ * @param {size} $height (100px) - Height of the grid
+ * @param {number} $x (10) - X Blocks
+ * @param {number} $y (10) - Y Blocks
+ * @param {number} $margin (0) - Margin between blocks
+ */
+@mixin grid($name: grid, $width: 100px, $height: 100px, $x: 10, $y: 10, $margin: 0 ){
+
+	$minGrid: min($x,$y);
+	$maxGrid: max($x,$y);
+
+	$blockWidth: $width / $x - ($margin - $margin / $x);
+	$blockHeight: $height / $y - ($margin - $margin / $y);
+
+	.#{$name} {
+
+		position: relative;
+
+		width: $width;
+		height: $height;
+
+		// size
+		@for $i from 0 through $minGrid {
+			.s#{$i} {
+				position: absolute;
+				width: #{$blockWidth * $i + ( $margin * ($i - 1))};
+				height: #{$blockHeight * $i + ( $margin * ($i - 1))};
+			}
+		}
+
+		// width
+		@for $i from 0 through $x {
+			.w#{$i} {
+				position: absolute;
+				width: #{$blockWidth * $i + ( $margin * ($i - 1))};
+			}
+		}
+
+		// height
+		@for $i from 0 through $x {
+			.h#{$i} {
+				position: absolute;
+				height: #{$blockHeight * $i + ( $margin * ($i - 1))};
+			}
+		}
+
+		// x
+		$x2: $x - 1;
+		@for $i from 0 through $x2 {
+			.x#{$i} {
+				left: $blockWidth * $i + ($margin * $i);
+			}
+		}
+
+		// y
+		$y2: $y - 1;
+		@for $i from 0 through $y2 {
+			.y#{$i} {
+				top: $blockHeight * $i + ($margin * $i);
+			}
+		}
+	}
+}
+

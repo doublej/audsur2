@@ -1,0 +1,25 @@
+// Source Paths
+$pathFont: '../font/';
+$pathImage: '../image/';
+
+// Sprite Images
+$spriteDefault: 'sprite-default.png';
+
+// Fonts
+$fontArial: Arial, sans-serif;
+
+// Breakpoint sizes
+$breakpoints: (
+	'x-small': '(max-width: 479px)',
+	'small': '(max-width: 767px)',
+	'medium': '(max-width: 1024px)',
+	'large': '(min-width: 1025px)',
+);
+
+// Sizes
+
+// Colors
+$colorMain: #000;
+
+// Z-indexes
+$layout: default;

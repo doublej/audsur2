@@ -1,0 +1,21 @@
+// Default Icon
+@mixin icn ($width: 16px, $height: 16px) {
+	display: inline-block;
+	@include size($width, $height);
+	line-height: $height;
+	font-style: normal;
+	vertical-align: text-top;
+	margin-top: 1px;
+}
+
+@mixin icn-image ($width: 16px, $height: 16px, $posX: 0, $posY: 0, $imageSrc: $spriteDefault) {
+	@extend %ir;
+	@include icn($width, $height);
+	@include background($imageSrc, no-repeat, $posX, $posY);
+}
+
+@mixin icn-base64 ($src, $width: 16px, $height: 16px, $posX: 0, $posY: 0) {
+	@extend %ir;
+	@include icn($width, $height);
+	background: url('#{$src}') no-repeat;
+}

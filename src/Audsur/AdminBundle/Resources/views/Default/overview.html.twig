@@ -36,7 +36,7 @@
 				<a href="{{ path('admin_product_edit', {id: product.id}) }}">wijzig</a>
 			</td>
 			<td>
-				<a href="{{ path('admin_product_delete', {id: product.id}) }}">verwijder</a>
+				<a href="{{ path('admin_product_delete', {id: product.id}) }}" onclick="return confirm('Weet je het zeker?')">verwijder</a>
 			</td>
 		</tr>
 
