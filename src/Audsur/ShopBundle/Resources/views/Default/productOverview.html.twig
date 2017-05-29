@@ -2,36 +2,25 @@
 {% block title %} Home {% endblock %}
 {% block body %}
 	<h2>title</h2>
-	{% for key, products in products %}
-		{{ key }}
-		{% for product in products %}
-			{% if loop.first %}
-			<table>
-			{% endif %}
-			<tr>
-			<td>{{ product.id }}
-			</td>
-			<td>{{ product.category.name }}</td>
-			<td>{{ product.brand.name }}</td>
-			<td>
-			<a href="{{ path('audsur_shop_get_single_product', {
-				'categorySlug': product.category.slug,
-				'productId': product.id,
-				'productSlug': product.slug
-			} ) }}">
-			{{ product.name }}
-			</a></td>
-			<td>{{ product.description |striptags }}</td>
-			</tr>
-			{% if loop.last %}
-			</table>
-			{% endif %}
+	<div class="productOverview">
+
+		{#//{{ dump(product) }}#}
+
+		{% for product in group %}
+
+				{# {{ product.id }} #}
+				{# {{ product.category.name }} #}
+				<a class="productRow" href="{{ path('audsur_shop_get_single_product', { 'categorySlug': product.category.slug, 'productId': product.id, 'productSlug': product.slug })}}">
+					<div class="model">
+						<span class="brandName">{{ product.brand.name }}</span> <span class="name">{{ product.name }}</span>
+					</div>
+					<div class="description">
+						<span>{{ product.description |striptags | truncate(200, true) }}</span>
+					</div>
+				</a>
 		{% endfor %}
 
-	{#{% else %}#}
-		{#No users have been found.#}
-	{% endfor %}
-
+	</div>
 
 	{#<a href="{{ paginatorIndex - 1 }}">vorige</a>#}
 	{#<a href="{{ paginatorIndex + 1 }}">volgende</a>#}

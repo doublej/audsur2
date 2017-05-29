@@ -21,7 +21,9 @@ class AppKernel extends Kernel
             new Audsur\PagesBundle\AudsurPagesBundle(),
             new Audsur\SecurityBundle\AudsurSecurityBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
-        );
+
+
+    );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

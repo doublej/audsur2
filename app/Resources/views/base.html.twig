@@ -2,15 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+	    <title>{{ block('title') }}</title>
+	    {{ block('stylesheets') }}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 	    <link rel="stylesheet" type="text/css" href="{{ asset('inc/style/screen.css') }}"
     </head>
     <body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %} >
-
-        {{ render(controller('AudsurShopBundle:Menu:categoryList')) }}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="container">
+	        <header>
+		        {#<h1>Audiosurvivors</h1>#}
+	            <div class="menu">
+		            {{ render(controller('AudsurShopBundle:Menu:categoryList')) }}
+	            </div>
+	        </header>
+	        {{ block('body') }}
+        </div>
+        {{ block('javascripts') }}
     </body>
 </html>

@@ -1,0 +1,47 @@
+.productOverview {
+	width: 100%;
+
+	h4{
+		margin:5px 0;
+		padding:2px 5px;
+
+		background: $lightGreen;
+	}
+	.productGroup{
+		padding: 2px;
+		margin:15px 0 5px 0;
+	}
+	.productRow {
+		display: block;
+		margin: 2px 0;
+		text-decoration: none;
+
+		div {
+			display: block;
+
+			height: 12px;
+			font-size: 12px;
+			line-height: 12px;
+
+			padding:5px;
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			background: $lightGrey;
+			color: $darkText;
+
+			&.model { width: 200px; position: absolute; }
+			&.description { margin-left: 212px; }
+
+		}
+
+		&:hover div {
+			background: $lightGreen;
+			color: $darkText;
+		}
+
+	}
+
+}

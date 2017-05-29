@@ -43,42 +43,64 @@ class DefaultController extends Controller
         );
     }
 
+    /*
+     * @todo refactor, looks too complex
+     */
+//    public function getCategoryAction($slug, $type = null, $grouped = true)
+//    {
+//
+//        $selectedGroup = $this->getDoctrine()->getRepository(
+//            'AudsurShopBundle:'.$type
+//        );
+//        $selectedGroup = $selectedGroup->findOneBySlug($slug);
+//
+//        $products = $this->getDoctrine()
+//            ->getRepository('AudsurShopBundle:Product');
+//
+//        $query = $products->createQueryBuilder('p')
+//            ->join('p.brand','b')
+//            ->join('p.category','g')
+//            ->select('p', 'b', 'g')
+//            ->where('p.'.strtolower($type).' = '.$selectedGroup->getId());
+//
+//        $products = $query->getQuery()->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+//
+//
+//        $treeArray = array();
+//        foreach($products as $el) {
+//            $firstLetter = strtoupper(substr($el['brand']['name'], 0, 1));
+//            if(!(isset($treeArray[$firstLetter])) ) {
+//                $treeArray[$firstLetter] = array();
+//
+//            }
+//            array_push($treeArray[$firstLetter], $el);
+//        }
+//
+//        $paginatorIndex = 1;
+//        return $this->render('AudsurShopBundle:Default:productOverview.html.twig', array(
+//                'products' => $treeArray,
+//                'paginatorIndex' => $paginatorIndex
+//            )
+//        );
+//
+//    }
+
     public function getGroupAction($slug, $type = null, $grouped = true)
     {
 
-
-        $selectedGroup = $this->getDoctrine()->getRepository(
-            'AudsurShopBundle:'.$type
-        );
-        $selectedGroup = $selectedGroup->findOneBySlug($slug);
-
-        $products = $this->getDoctrine()
-            ->getRepository('AudsurShopBundle:Product');
-
-        $query = $products->createQueryBuilder('p')
-            ->join('p.brand','b')
-            ->join('p.category','g')
-            ->select('p', 'b', 'g')
-            ->where('p.'.strtolower($type).' = '.$selectedGroup->getId());
-
-        $products = $query->getQuery()->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+        $group = $this->getDoctrine()
+            ->getRepository('AudsurShopBundle:'.$type)
+            ->findOneByName($slug);
+//            ->getProducts();
 
 
-        $treeArray = array();
-        foreach($products as $el) {
-            $firstLetter = strtoupper(substr($el['brand']['name'], 0, 1));
-            if(!(isset($treeArray[$firstLetter])) ) {
-                $treeArray[$firstLetter] = array();
+        echo $slug;
+        \Doctrine\Common\Util\Debug::dump($group, 3);
+        die;
 
-            }
-            array_push($treeArray[$firstLetter], $el);
-        }
 
-        $paginatorIndex = 1;
-//        print_r($treeArray);die;
         return $this->render('AudsurShopBundle:Default:productOverview.html.twig', array(
-                'products' => $treeArray,
-                'paginatorIndex' => $paginatorIndex
+                'group' => $group
             )
         );
 

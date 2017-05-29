@@ -39,9 +39,7 @@ audio:not([controls]) {
 html {
   font-family: sans-serif;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  text-size-adjust: 100%;
   /* 2 */
   -webkit-font-smoothing: antialiased; }
 
@@ -350,6 +348,15 @@ table {
  * Respond To (Breakpoint)
  * @param {string} $name - Name of the breakpoint used in $breakpoints
  */
+.menu ul {
+  *zoom: 1; }
+  .menu ul:before, .menu ul:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .menu ul:after {
+    clear: both; }
+
 .clear {
   clear: both;
   display: block;
@@ -378,12 +385,46 @@ table {
   background-color: transparent;
   border: 0; }
 
+.productOverview {
+  width: 100%; }
+  .productOverview h4 {
+    margin: 5px 0;
+    padding: 2px 5px;
+    background: #b5c480; }
+  .productOverview .productGroup {
+    padding: 2px;
+    margin: 15px 0 5px 0; }
+  .productOverview .productRow {
+    display: block;
+    margin: 2px 0;
+    text-decoration: none; }
+    .productOverview .productRow div {
+      display: block;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+      padding: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: #bbb;
+      color: #222; }
+      .productOverview .productRow div.model {
+        width: 200px;
+        position: absolute; }
+      .productOverview .productRow div.description {
+        margin-left: 212px; }
+    .productOverview .productRow:hover div {
+      background: #b5c480;
+      color: #222; }
+
 html, body {
   padding-top: 0;
   height: 100%; }
 
-.view {
-  height: 100%; }
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
 
 .dev-bar {
   position: absolute;
@@ -404,18 +445,27 @@ html, body {
     right: 10px;
     top: 50%; }
 
-.view {
-  position: relative; }
+.menu {
+  width: 100%;
+  background: #719101; }
+  .menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center; }
+    .menu ul li {
+      display: inline-block;
+      padding: 5px 20px;
+      line-height: 14px;
+      text-align: center;
+      margin: 2px 2px 0 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: bold; }
+      .menu ul li a {
+        text-decoration: none;
+        color: #b5c480; }
 
-/**
- *	Page - index
- */
-/**
- *	Page - knockout
- */
-/**
- *	Page - canvas
- */
 /**
  *	Page - home
  */
